@@ -6,6 +6,11 @@ class List
 	public:
 		void insert(int pos, T e)
 		{
+			
+		}
 
+		void append(T e)
+		{
+			
 		}
 }
