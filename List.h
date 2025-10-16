@@ -14,7 +14,7 @@ class List
 			}
 			else
 			{
-				ListArray.arr[pos] = e;
+				arr[pos] = e;
 			}
 		}
 
