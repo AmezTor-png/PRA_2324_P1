@@ -87,10 +87,11 @@ class ListArray : public List<T>
             {
                 for(int i = max - 1; i >= 0 ; i--)    /*busca empezando desde atrás el último sitio en la fila*/
                 {
-                    if(arr[i] == T() && arr[i - 1] != T()) 
+                    if(i > 0 && arr[i] == T() && arr[i - 1] != T()) 
                     {
                         arr[i] = e;
                         n++;
+						break;
                     }
                     else    /*es un array vacío y e va en la primera posición*/
                     {
@@ -190,6 +191,23 @@ class ListArray : public List<T>
 
         friend ostream& operator<<(ostream &out, const ListArray<T> &list)
         {
-            
-        }
+            for(int i = 0; i < max; i++)
+			{
+				if(arr[i] == T())	/*si el contenido en la posición i está vacío*/
+				{
+					out << " ";
+				}
+				else
+				{
+					out << arr[i];
+				}
+
+				if(i < max - 1)
+				{
+					out << ", ";
+				}
+			}
+        
+			return out;
+		}
 };
