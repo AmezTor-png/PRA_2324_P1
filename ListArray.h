@@ -22,12 +22,12 @@ class ListArray : public List<T>
             
             T* new_arr = new T[new_size];
 
-            for(int i = 0; i < new_size; i++)    /*inicializar las nuevas casillas del nuevo array a nullptr ya que es una calse OO*/
+            for(int i = 0; i < new_size; i++)    /*inicializar las nuevas casillas del nuevo array a T() ya que es una calse OO tipo T*/
             {
-                new_arr[i] = nullptr;
+                new_arr[i] = T();
             }
             
-            for(int i = 0; i < n; i++)    /*sobreescribir en nullptr la información de array anterior*/
+            for(int i = 0; i < n; i++)    /*sobreescribir en T() la información de array anterior*/
             {
                 new_arr[i] = arr[i];
             }
@@ -63,7 +63,7 @@ class ListArray : public List<T>
                 resize(max + 1);
             }
 
-            if(arr[pos] != nullptr)    /*está ocupada*/
+            if(arr[pos] != T())    /*está ocupada*/
             {
                     for(int i = max - 1; i > pos; i--)    /*mueve todos los valores a la derecha*/
                     {
@@ -87,7 +87,7 @@ class ListArray : public List<T>
             {
                 for(int i = max - 1; i >= 0 ; i--)    /*busca empezando desde atrás el último sitio en la fila*/
                 {
-                    if(arr[i] == nullptr && arr[i - 1] != nullptr) 
+                    if(arr[i] == T() && arr[i - 1] != T()) 
                     {
                         arr[i] = e;
                         n++;
@@ -108,7 +108,7 @@ class ListArray : public List<T>
                 resize(max + 1);
             }
             
-            if(arr[0] == nullptr)    /*la casilla 0 está libre*/
+            if(arr[0] == T())    /*la casilla 0 está libre*/
             {
                 arr[0] = e;
                 n++;
@@ -127,17 +127,38 @@ class ListArray : public List<T>
 
 		T remove(int pos)
 		{
-			
+			if(pos < 0 || pos > size() - 1)
+			{
+				throw out_of_range("Posición fuera del rango valido.");
+			}
+
+			T aux = arr[pos];
+			arr[pos] = T();
+
+			return aux;
 		}
 
 		T get(int pos)
 		{
-			
+			if(pos < 0 || pos > size() - 1)
+			{
+				throw out_of_range("Posición fuera del rango válido.");
+			}
+
+			return arr[pos];
 		}
 
 		int search(T e)
 		{
-			
+			for(int i = 0; i < max; i++)
+			{
+				if(arr[i] == e)
+				{
+					return i;
+				}
+			}	
+		
+			return -1;
 		}
 
 		bool empty()
@@ -159,7 +180,12 @@ class ListArray : public List<T>
 
         T operator[](int pos)
         {
-            
+			if(pos < 0 || pos > size() - 1)
+			{
+				throw out_of_range("Posición fuera del rango válido.");
+			}
+
+			return arr[pos];
         }
 
         friend ostream& operator<<(ostream &out, const ListArray<T> &list)
