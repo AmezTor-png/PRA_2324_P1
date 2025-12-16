@@ -1,7 +1,12 @@
+#ifndef LISTLINKED_H
+#define LISTLINKED_H
+
 #include <ostream>
+#include <stdexcept>
+
 #include "List.h"
 #include "Node.h"
-#include <stdexcept>
+
 using namespace std;
 
 template <typename T>
@@ -193,3 +198,5 @@ class ListLinked : public List<T>
                     return out;
             }
 };
+
+#endif
