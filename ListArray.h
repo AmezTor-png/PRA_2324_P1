@@ -15,7 +15,7 @@ class ListArray : public List<T>
         T* arr;
         int max;
         int n;
-        static const int MINSIZE;
+        static const int MINSIZE = 2;
 
         void resize(int new_size)
         {
@@ -197,7 +197,7 @@ class ListArray : public List<T>
         {
             for(int i = 0; i < max; i++)
 			{
-				if(arr[i] == T())	/*si el contenido en la posición i está vacío*/
+				if(list.arr[i] == T())	/*si el contenido en la posición i está vacío*/
 				{
 					out << " ";
 				}
