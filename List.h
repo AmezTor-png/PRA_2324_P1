@@ -17,3 +17,5 @@ class List
 		virtual bool empty() = 0;
 		virtual int size() = 0;
 };
+
+#endif
