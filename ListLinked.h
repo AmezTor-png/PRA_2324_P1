@@ -47,12 +47,12 @@ class ListLinked : public List<T>
 
             if (pos == 0)
             {
-				        newElement->next = first;
+				        newElement -> next = first;
 				        first = newElement;
             }
             else
             {
-				        for(int i=0;i<pos-1<i++)
+				        for(int i = 0; i < pos - 1; i++)
                 {
 					          aux = aux->next;
 				        }
