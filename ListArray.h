@@ -1,4 +1,8 @@
-#include <ostream>
+#ifndef LISTARRAY_H
+#define LISTARRAY_H
+
+#include <stdexcept>
+#include <iostream>
 #include "List.h"
 
 using namespace std;
@@ -211,3 +215,5 @@ class ListArray : public List<T>
 			return out;
 		}
 };
+
+#endif
